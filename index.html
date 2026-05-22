@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Daisy GT // Hardened Telemetry</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono&family=Rajdhani:wght@700&display=swap">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root {
+      --bg-main: #0D0D0E;
+      --bg-panel: rgba(20, 20, 22, 0.85);
+      --border-edge: 1px solid #25262B;
+      --racing-red: #FF1E27;
+      --electric-cyan: #00E5FF;
+      --text-main: #E4E6EB;
+      --text-muted: #6C727F;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'IBM Plex Sans', sans-serif;
+      margin: 0;
+      padding: 16px;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hud-container {
+      max-width: 480px;
+      margin: 0 auto;
+      border: var(--border-edge);
+      background: var(--bg-panel);
+      padding: 20px;
+    }
+
+    .hud-header {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      border-bottom: var(--border-edge);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--electric-cyan);
+      text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .telemetry-value {
+      color: var(--text-main);
+    }
+
+    .paywall-card {
+      border: 1px solid var(--racing-red);
+      background: rgba(255, 30, 39, 0.02);
+      padding: 16px;
+      margin-top: 24px;
+    }
+
+    .paywall-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      color: var(--racing-red);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .paywall-desc {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+
+    .btn-pay {
+      width: 100%;
+      background: var(--racing-red);
+      border: none;
+      color: #FFF;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-pay:active {
+      background: #cc141b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hud-container">
+  <div class="hud-header">
+    <span>DAISY GT // MOTORSPORT CORE</span>
+    <span class="status-tag">[LIVE_CONN_SECURE]</span>
+  </div>
+
+  <div class="telemetry-row">
+    <span>LAT_G_FORCE</span>
+    <span class="telemetry-value" id="latG">1.24 G</span>
+  </div>
+  <div class="telemetry-row">
+    <span>LON_G_FORCE</span>
+    <span class="telemetry-value" id="lonG">0.85 G</span>
+  </div>
+  <div class="telemetry-row">
+    <span>SYS_ENGINE_RPM</span>
+    <span class="telemetry-value" id="rpm">7,420 RPM</span>
+  </div>
+  <div class="telemetry-row">
+    <span>CORE_GPS_COORD</span>
+    <span class="telemetry-value">41.3684° N, 82.1076° W</span>
+  </div>
+
+  <div class="paywall-card">
+    <div class="paywall-title">⚠️ ADVANCED TUNING MODULE LOCKED</div>
+    <div class="paywall-desc">
+      Your system configuration is running the baseline secure layer. Unlock the high-performance diagnostic map utilities instantly via Telegram Stars.
+    </div>
+    <button class="btn-pay" onclick="triggerStarsPayment()">
+      UNLOCK CONFIG // ⭐️ 250 STARS
+    </button>
+  </div>
+</div>
+
+<script>
+  // Initialize Telegram WebApp API
+  const tg = window.Telegram.WebApp;
+  tg.ready();
+  tg.expand(); // Forces the app to open in full screen inside Telegram
+
+  function triggerStarsPayment() {
+    // This calls your backend architecture to request an invoice link
+    console.log("Triggering Stars validation protocol...");
+    
+    // In a live environment, you pass the invoice link generated via your bot
+    // Example: tg.openInvoice("https://t.me/invoice/example");
+    
+    alert("Initiating secure transaction handshake via @DaisyOSbot.");
+  }
+</script>
+</body>
+</html>
