@@ -1,0 +1,30 @@
+// Daisy GT - Real-Time Interface Data Pipeline
+
+/**
+ * Updates a specific data field on the dashboard display
+ * @param {string} elementId - The target HTML container element
+ * @param {string|number} dataValue - The fresh sensory data input
+ */
+function updateTelemetryField(elementId, dataValue) {
+    const targetElement = document.getElementById(elementId);
+    if (targetElement) {
+        // Safe innerHTML replacement for high-speed tabular array data
+        targetElement.innerHTML = `${dataValue}`;
+    }
+}
+
+// Simulated data stream configuration
+function runLiveTelemetrySimulation() {
+    setInterval(() => {
+        // Generate minor real-time variances to simulate active track sensors
+        const randomRPM = Math.floor(7400 + Math.random() * 80);
+        const randomLatG = (1.2 + Math.random() * 0.1).toFixed(2);
+        
+        // Push values clean to the viewport targets
+        updateTelemetryField('rpm', `${randomRPM.toLocaleString()} RPM`);
+        updateTelemetryField('latG', `${randomLatG} G`);
+    }, 250); // Updates every 250 milliseconds
+}
+
+// Uncomment to run local tracking simulation tests outside Telegram client
+// window.onload = runLiveTelemetrySimulation;
